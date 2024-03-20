@@ -12,6 +12,7 @@ import Jobhome from './Components/Home/Jobhome';
 import Applycard from './Components/Home/Applycard/Applycard';
 import Paymentcard from './Components/Home/Paymentcard/Paymentcard';
 import Addjobcard from './Components/Admin/Addjobcard/Addjobcard';
+import Account from './Components/Home/Account/Account';
 
 const Home = lazy(() => import("./Components/Home/Home"));
 const Login = lazy(() => import("./Components/Login/Login"));
@@ -38,6 +39,7 @@ function App() {
           <Route path="/applycard" exact element={<Applycard/>} />
           <Route path="/paymentcard" exact element={<Paymentcard/>} />
           <Route path="/addjob" exact element={<Addjobcard/>} />
+          <Route path="/Account" exact element={<Account/>} />
         </Routes>
       </Suspense>
     </BrowserRouter>
