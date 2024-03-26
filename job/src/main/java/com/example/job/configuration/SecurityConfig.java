@@ -27,16 +27,17 @@ public class SecurityConfig {
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
                 return httpSecurity
-                                .csrf(AbstractHttpConfigurer::disable)
-                                .authorizeHttpRequests(
-                                                request -> request.requestMatchers("/api/user/signup",
-                                                                "/api/auth/authenticate").permitAll())
+                                     .csrf(AbstractHttpConfigurer::disable)
+                                     .authorizeHttpRequests(requests -> requests
+                                 .requestMatchers( "/auth/**","/v3/api-docs/**",
+                                           "/swagger-ui.html", "/swagger-ui/**","/jobs/getAllJobs")
+                                 .permitAll())
                                 .authorizeHttpRequests(request -> request
                                                 .requestMatchers("/v3/api-docs/**", "/swagger-ui.html",
                                                                 "/swagger-ui/**")
                                                 .permitAll())
                                 .authorizeHttpRequests(requests -> requests
-                                                .requestMatchers("/api/users/**", "/api/viewjob/**")
+                                                .requestMatchers("/user/**","/admin/**","/jobs/**")
                                                 .authenticated())
                                 .sessionManagement(session -> session
                                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
